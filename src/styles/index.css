@@ -10,7 +10,7 @@
 /* Global styles */
 body {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Work Sans", serif !important;  
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
