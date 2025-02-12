@@ -1,0 +1,130 @@
+.about {
+    background-color: var(--background-light);
+    padding: 6rem 0;
+    width: 100%;
+  }
+  
+  .about-container {
+    margin: 0 auto;
+    max-width: var(--container-max-width);
+    padding: 0 8rem; 
+  }
+  
+  .about-title {
+    color: var(--text-dark);
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-subtitle {
+    color: var(--text-dark);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: normal;
+    line-height: 1.4;
+    margin-bottom: 3rem;
+    max-width: 800px;
+  }
+  
+  .emphasis {
+    font-weight: bold;
+    background-color: pink;
+  }
+  
+  .about-grid {
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .section-title {
+    color: var(--text-dark);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .text-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+  }
+  
+  .text-link:hover {
+    opacity: 0.8;
+  }
+  
+  .resume-button {
+    align-self: flex-start;
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    border-radius: 9999px;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 0.75rem 2rem;
+    transition: all var(--transition-fast);
+  }
+  
+  .resume-button:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+  
+  .skills-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .skill-tag {
+    background-color: #ffebe6; 
+    border-radius: 9999px;
+    color: #333333; 
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.75rem 1.25rem; 
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 1200px) {
+    .about-container {
+      padding: 0 4rem; 
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .about-container {
+      padding: 0 2rem;
+    }
+    
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  
+    .about-title {
+      font-size: 2rem;
+    }
+  
+    .about-subtitle {
+      font-size: 1.25rem;
+    }
+  }

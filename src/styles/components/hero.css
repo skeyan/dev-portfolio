@@ -1,0 +1,109 @@
+.hero {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
+  
+  .hero-gradient {
+    background: var(--gradient-hero);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+  }
+  
+  .hero-particles {
+    height: 100% !important;
+    left: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+    width: 100% !important;
+    z-index: 1;
+  }
+  
+  #tsparticles {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .hero-content {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    max-width: var(--container-max-width);
+    padding: 0 var(--container-padding);
+    position: relative;
+    width: 100%;
+    z-index: 2;
+  }
+  
+  .hero-text {
+    align-self: center;
+    max-width: 800px;
+    text-align: left;
+    margin-left: 100px;
+  }
+  
+  .hero-title {
+    color: var(--text-light);
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-title strong {
+    color: var(--text-light);
+    font-weight: 700;
+  }
+  
+  .hero-subtitle {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-button {
+    background-color: var(--text-light);
+    border-radius: 9999px;
+    color: var(--color-primary);
+    display: inline-block;
+    font-weight: 500;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+  
+  .hero-button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .hero-text {
+      margin-left: 20px;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+    }
+  
+    .hero-subtitle {
+      font-size: 0.875rem;
+    }
+  }
