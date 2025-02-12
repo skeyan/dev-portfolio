@@ -14,7 +14,7 @@ const About = () => {
   ];
 
   return (
-    <section className="about">
+    <section id="about" className="about">
       <div className="about-container">
         <h2 className="about-title">
           ✏️ About Me

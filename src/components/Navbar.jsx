@@ -1,23 +1,67 @@
-import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import '../styles/components/navbar.css';
 
 const Navbar = () => {
-  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const location = useLocation();
   
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 50);
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
-  const isActive = (path) => {
-    return location.pathname === path ? 'active' : '';
+
+  useEffect(() => {
+    // Set up intersection observer
+    const options = {
+      threshold: 0.2 // 20% of the section needs to be visible
+    };
+
+    const callback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id || 'home');
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+
+    // Observe hero, about, and projects sections
+    const sections = ['hero', 'about', 'projects'].map(id => 
+      document.getElementById(id)
+    ).filter(Boolean);
+
+    sections.forEach(section => observer.observe(section));
+
+    return () => sections.forEach(section => observer.unobserve(section));
+  }, []);
+
+  const scrollToSection = (sectionId, e) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    
+    if (element) {
+      const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    } else if (location.pathname !== '/') {
+      window.location.href = '/#' + sectionId;
+    }
+  };
+
+  const getNavLinkClass = (section) => {
+    return `nav-link ${activeSection === section ? 'active' : ''}`;
   };
 
   return (
@@ -28,15 +72,30 @@ const Navbar = () => {
         </Link>
         
         <div className="navbar-links">
-          <Link to="/" className={`nav-link ${isActive('/')}`}>
+          <Link 
+            to="/" 
+            className={getNavLinkClass('hero')}
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          >
             Home
           </Link>
-          <Link to="/about" className={`nav-link ${isActive('/about')}`}>
+          <a 
+            href="#about" 
+            className={getNavLinkClass('about')}
+            onClick={(e) => scrollToSection('about', e)}
+          >
             About
-          </Link>
-          <Link to="/projects" className={`nav-link ${isActive('/projects')}`}>
+          </a>
+          <a 
+            href="#projects" 
+            className={getNavLinkClass('projects')}
+            onClick={(e) => scrollToSection('projects', e)}
+          >
             Projects
-          </Link>
+          </a>
           <a 
             href="/files/YanEva2025.pdf" 
             target="_blank" 

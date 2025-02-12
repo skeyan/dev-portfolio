@@ -6,15 +6,12 @@ const Hero = () => {
   useEffect(() => {
     if (window.particlesJS) {
       window.particlesJS.load('particles-js', '/particles.json', function(response) {
-        console.log('Particles.js loaded successfully');
       });
-    } else {
-      console.error('Particles.js not loaded');
     }
   }, []);
 
   return (
-    <section className="hero">
+    <section id="hero" className="hero">
       <div className="hero-gradient"></div>
       <div id="particles-js" className="hero-particles"></div>
       <div className="hero-content">

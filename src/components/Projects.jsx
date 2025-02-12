@@ -21,7 +21,7 @@ const Projects = () => {
   ];
 
   return (
-    <section className="projects">
+    <section id="projects" className="projects">
       <div className="projects-container">
         <h2 className="projects-title">
           🎨 Featured Work
