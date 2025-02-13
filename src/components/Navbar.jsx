@@ -5,8 +5,9 @@ import '../styles/components/navbar.css';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu
   const location = useLocation();
-  const navigate = useNavigate(); // Use the useNavigate hook
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,8 +68,8 @@ const Navbar = () => {
     e.preventDefault();
 
     if (sectionId === '') {
-        navigate('/');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      navigate('/');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     if (location.pathname === '/') {
@@ -83,6 +84,9 @@ const Navbar = () => {
         scrollToSection(sectionId);
       }, 100);
     }
+
+    // Close mobile menu after clicking a link
+    setIsMobileMenuOpen(false);
   };
 
   const getNavLinkClass = (section) => {
@@ -91,6 +95,13 @@ const Navbar = () => {
 
   const handleContactClick = (e) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Close mobile menu after clicking a link
+    setIsMobileMenuOpen(false);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -100,13 +111,25 @@ const Navbar = () => {
           EVA YAN.
         </Link>
         
-        <div className="navbar-links">
+        {/* Hamburger Icon for Mobile */}
+        <button 
+          className="hamburger-menu"
+          onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
+        >
+          <div className={`hamburger-icon ${isMobileMenuOpen ? 'open' : ''}`}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+
+        {/* Desktop and Mobile Links */}
+        <div className={`navbar-links ${isMobileMenuOpen ? 'open' : ''}`}>
           <Link 
             to="/" 
             className={getNavLinkClass('home')}
-            onClick={(e) => {
-                handleNavLinkClick(e, '')
-            }}
+            onClick={(e) => handleNavLinkClick(e, '')}
           >
             Home
           </Link>
