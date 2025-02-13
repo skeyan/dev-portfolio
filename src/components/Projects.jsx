@@ -4,7 +4,7 @@ const Projects = () => {
   const projects = [
     {
         title: "LinkedIn's modernized reporting flow",
-        description: "A complete overhaul of the web reporting flow.",
+        description: "A complete overhaul of the web reporting flow. Write-up coming soon.",
         image: "/linkedin-reportin.png",
         technologies: ["JAVASCRIPT", "EMBER.JS", "TYPESCRIPT", "GRAPHQL"],
         demoUrl: "",
