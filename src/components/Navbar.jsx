@@ -5,47 +5,72 @@ import '../styles/components/navbar.css';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Helper function to get element's distance from top of page
+  const getTopOffset = (element) => {
+    const rect = element.getBoundingClientRect();
+    return rect.top + window.scrollY;
+  };
+
+  // Helper function to determine which section is currently in view
+  const determineSectionInView = () => {
+    const sections = ['hero', 'about', 'projects'].map(id => 
+      document.getElementById(id)
+    ).filter(Boolean);
+
+    const viewportMiddle = window.scrollY + (window.innerHeight / 3);
+    
+    // Get all section positions
+    const sectionPositions = sections.map(section => ({
+      id: section.id,
+      top: getTopOffset(section),
+      bottom: getTopOffset(section) + section.offsetHeight
+    }));
+
+    // Find the current section
+    const currentSection = sectionPositions.find(section => 
+      viewportMiddle >= section.top && viewportMiddle < section.bottom
+    );
+
+    // If at the very top, set to hero/home
+    if (window.scrollY < 100) {
+      return 'home';
+    }
+
+    // If we found a section, use it, otherwise use the last section if we're at the bottom
+    if (currentSection) {
+      return currentSection.id;
+    } else if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
+      return sections[sections.length - 1].id;
+    }
+
+    return activeSection; // Keep current section if none found
+  };
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      if (location.pathname === '/') {
+        // Update active section only on homepage
+        const newSection = determineSectionInView();
+        if (newSection !== activeSection) {
+          setActiveSection(newSection);
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [activeSection, location.pathname]);
 
   useEffect(() => {
     // Reset activeSection when navigating away from the homepage
     if (location.pathname !== '/') {
       setActiveSection('');
-    } else {
-      // Set up intersection observer only on the homepage
-      const options = {
-        threshold: 0.2 // 20% of the section needs to be visible
-      };
-
-      const callback = (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id || 'home');
-          }
-        });
-      };
-
-      const observer = new IntersectionObserver(callback, options);
-
-      // Observe hero, about, and projects sections
-      const sections = ['hero', 'about', 'projects'].map(id => 
-        document.getElementById(id)
-      ).filter(Boolean);
-
-      sections.forEach(section => observer.observe(section));
-
-      return () => sections.forEach(section => observer.unobserve(section));
     }
   }, [location.pathname]);
 
@@ -73,19 +98,14 @@ const Navbar = () => {
     }
 
     if (location.pathname === '/') {
-      // On homepage, scroll to the section
       scrollToSection(sectionId);
     } else {
-      // On other pages, navigate to the homepage and then scroll to the section
       navigate('/');
-
-      // Wait for the page to load, then scroll to the section
       setTimeout(() => {
         scrollToSection(sectionId);
       }, 100);
     }
 
-    // Close mobile menu after clicking a link
     setIsMobileMenuOpen(false);
   };
 
@@ -95,8 +115,6 @@ const Navbar = () => {
 
   const handleContactClick = (e) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Close mobile menu after clicking a link
     setIsMobileMenuOpen(false);
   };
 
@@ -111,7 +129,6 @@ const Navbar = () => {
           EVA YAN.
         </Link>
         
-        {/* Hamburger Icon for Mobile */}
         <button 
           className="hamburger-menu"
           onClick={toggleMobileMenu}
@@ -124,7 +141,6 @@ const Navbar = () => {
           </div>
         </button>
 
-        {/* Desktop and Mobile Links */}
         <div className={`navbar-links ${isMobileMenuOpen ? 'open' : ''}`}>
           <Link 
             to="/" 
