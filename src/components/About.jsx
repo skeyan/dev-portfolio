@@ -20,10 +20,12 @@ const About = () => {
           ✏️ About Me
         </h2>
         
-        <h3 className="about-subtitle">
-          Full-stack, visual, <span className="emphasis">Interactive Media developer</span>,
-          specialized in web and game development.
-        </h3>
+        <div className="about-subtitle">
+          Full-stack, visual, interactive media developer and software engineer,
+          specialized in <span className="emphasis">web and game development</span>.  
+          <br></br><br></br>
+          <span className="emphasis">3 YOE</span> open to mid-level roles.
+        </div>
 
         <div className="about-grid">
           <div className="about-text">
