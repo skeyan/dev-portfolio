@@ -12,7 +12,10 @@ const Footer = () => {
             <p className="footer-text">
               Hi there! Thank you for visiting my portfolio. Feel free to connect with me via email or through the links to the right.
               <br /><br />
-              I am open to opportunities and would love to talk more about creative interactive development.
+              I am open to opportunities and would love to talk more about software development.
+            
+              <br /><br />
+              <i>This site was designed & built from scratch using React, Vite, and Vercel.</i><br />
             </p>
           </div>
 

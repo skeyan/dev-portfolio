@@ -20,7 +20,7 @@ const Hero = () => {
             Hi there! I'm <strong>Eva Yan</strong>, a software engineer with a passion for interactive media of all kinds!
           </h1>
           <p className="hero-subtitle">
-            Currently at LinkedIn. Formerly at Holler, Cornell Tech.
+            Currently a Senior SWE (IC3) at <b>LinkedIn</b>. Formerly at <b>Holler</b>, <b>Cornell Tech</b>.
           </p>
           <Link to="/contact" className="hero-button">
             Get in touch
