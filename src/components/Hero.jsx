@@ -22,9 +22,20 @@ const Hero = () => {
           <p className="hero-subtitle">
             Currently a Senior SWE (IC3) at <b>LinkedIn</b>. Formerly at <b>Holler</b>, <b>Cornell Tech</b>.
           </p>
-          <Link to="/contact" className="hero-button">
-            Get in touch
-          </Link>
+          <div className="hero-cta-container">
+            <Link to="/contact" className="hero-button">
+              Get in touch
+            </Link>
+            <button 
+              onClick={() => window.open('/files/YanEva2025.pdf')}
+              className="hero-button"
+            >
+              Download resume
+            </button>
+            <a href="http://www.linkedin.com/in/sk-evayan" target="_blank" className="hero-button">
+              View LinkedIn Profile
+            </a>
+          </div>
         </div>
       </div>
     </section>
