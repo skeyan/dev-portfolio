@@ -22,7 +22,7 @@ const About = () => {
         
         <div className="about-subtitle">
           Full-stack, visual, interactive media developer and software engineer,
-          specialized in <span className="emphasis">web and game development</span>.  
+          specialized in <span className="emphasis">web development</span>.  
           <br></br><br></br>
           <span className="emphasis">3 YOE</span> open to mid-level roles.
         </div>
@@ -34,13 +34,12 @@ const About = () => {
               I'm a creative developer who builds solutions to fulfill businesses' goals with UX in mind.
             </p>
             <p>
-              I'm constantly inspired by technology that incorporates elements that people can interact with: from
-              video games, to web applications, to data visualizations.
-              My passions lie at the interaction of art, technology, and storytelling.
+              I'm constantly inspired by technology that incorporates elements that people can interact with to improve people's lives.
+              My passions lie at the interaction of technology, storytelling, and social good.
             </p>
             <p>
               As an engineer, I value clarity in communication and code, and strive to understand the "why" of the problem.
-              Outside of my job, I enjoy watching Netflix, playing video games, and reading!
+              In my next play, I value growth and working with great people!
             </p>
             <p>
               While you're here, check out my resume, or{' '}
