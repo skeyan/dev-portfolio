@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../styles/components/navbar.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const location = useLocation();
-  
+  const navigate = useNavigate(); // Use the useNavigate hook
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -17,33 +18,37 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    // Set up intersection observer
-    const options = {
-      threshold: 0.2 // 20% of the section needs to be visible
-    };
+    // Reset activeSection when navigating away from the homepage
+    if (location.pathname !== '/') {
+      setActiveSection('');
+    } else {
+      // Set up intersection observer only on the homepage
+      const options = {
+        threshold: 0.2 // 20% of the section needs to be visible
+      };
 
-    const callback = (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id || 'home');
-        }
-      });
-    };
+      const callback = (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id || 'home');
+          }
+        });
+      };
 
-    const observer = new IntersectionObserver(callback, options);
+      const observer = new IntersectionObserver(callback, options);
 
-    // Observe hero, about, and projects sections
-    const sections = ['hero', 'about', 'projects'].map(id => 
-      document.getElementById(id)
-    ).filter(Boolean);
+      // Observe hero, about, and projects sections
+      const sections = ['hero', 'about', 'projects'].map(id => 
+        document.getElementById(id)
+      ).filter(Boolean);
 
-    sections.forEach(section => observer.observe(section));
+      sections.forEach(section => observer.observe(section));
 
-    return () => sections.forEach(section => observer.unobserve(section));
-  }, []);
+      return () => sections.forEach(section => observer.unobserve(section));
+    }
+  }, [location.pathname]);
 
-  const scrollToSection = (sectionId, e) => {
-    e.preventDefault();
+  const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     
     if (element) {
@@ -55,13 +60,37 @@ const Navbar = () => {
         top: offsetPosition,
         behavior: "smooth"
       });
-    } else if (location.pathname !== '/') {
-      window.location.href = '/#' + sectionId;
+    }
+  };
+
+  const handleNavLinkClick = (e, sectionId) => {
+    e.preventDefault();
+
+    if (sectionId === '') {
+        navigate('/');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    if (location.pathname === '/') {
+      // On homepage, scroll to the section
+      scrollToSection(sectionId);
+    } else {
+      // On other pages, navigate to the homepage and then scroll to the section
+      navigate('/');
+
+      // Wait for the page to load, then scroll to the section
+      setTimeout(() => {
+        scrollToSection(sectionId);
+      }, 100);
     }
   };
 
   const getNavLinkClass = (section) => {
     return `nav-link ${activeSection === section ? 'active' : ''}`;
+  };
+
+  const handleContactClick = (e) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -74,10 +103,9 @@ const Navbar = () => {
         <div className="navbar-links">
           <Link 
             to="/" 
-            className={getNavLinkClass('hero')}
+            className={getNavLinkClass('home')}
             onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+                handleNavLinkClick(e, '')
             }}
           >
             Home
@@ -85,14 +113,14 @@ const Navbar = () => {
           <a 
             href="#about" 
             className={getNavLinkClass('about')}
-            onClick={(e) => scrollToSection('about', e)}
+            onClick={(e) => handleNavLinkClick(e, 'about')}
           >
             About
           </a>
           <a 
             href="#projects" 
             className={getNavLinkClass('projects')}
-            onClick={(e) => scrollToSection('projects', e)}
+            onClick={(e) => handleNavLinkClick(e, 'projects')}
           >
             Projects
           </a>
@@ -104,7 +132,11 @@ const Navbar = () => {
           >
             Resume
           </a>
-          <Link to="/contact" className="contact-button">
+          <Link 
+            to="/contact" 
+            className="contact-button"
+            onClick={handleContactClick}
+          >
             Contact
           </Link>
         </div>
