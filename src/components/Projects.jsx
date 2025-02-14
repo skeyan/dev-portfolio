@@ -12,7 +12,7 @@ const Projects = () => {
     },
     {
       title: "Rapid A/B experimentation for LinkedIn's reporting flow",
-      description: "Performed multiple A/B experiment to optimize message report action rate.",
+      description: "Performed multiple A/B experiments to optimize message report action rate.",
       image: "/reportin-messages.png",
       technologies: ["JAVASCRIPT", "EMBER.JS", "JAVA", "GRAPHQL"],
       demoUrl: "",

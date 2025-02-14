@@ -22,6 +22,9 @@ const Hero = () => {
           <p className="hero-subtitle">
             Currently a Senior SWE (IC3) at <b>LinkedIn</b>. Formerly at <b>Holler</b>, <b>Cornell Tech</b>.
           </p>
+          <p className="hero-subtitle">
+            Open to <b>mid-level roles</b>.
+          </p>
           <div className="hero-cta-container">
             <Link to="/contact" className="hero-button">
               Get in touch
