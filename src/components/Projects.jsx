@@ -4,7 +4,7 @@ const Projects = () => {
   const projects = [
     {
         title: "LinkedIn's modernized reporting flow",
-        description: "A complete overhaul of the web reporting flow.",
+        description: "A complete overhaul of the web reporting flow to improve developer efficiency and member experience.",
         image: "/linkedin-reportin.png",
         technologies: ["JAVASCRIPT", "EMBER.JS", "TYPESCRIPT", "GRAPHQL"],
         demoUrl: "",
@@ -15,6 +15,14 @@ const Projects = () => {
       description: "Performed multiple A/B experiment to optimize message report action rate.",
       image: "/reportin-messages.png",
       technologies: ["JAVASCRIPT", "EMBER.JS", "JAVA", "GRAPHQL"],
+      demoUrl: "",
+      githubUrl: ""
+    },
+    {
+      title: "Reusable form component architecture",
+      description: "Designed and lead frontend implementation of single-select form component in library used in over 20+ microservices.",
+      image: "/choice-pills.png",
+      technologies: ["JAVASCRIPT", "EMBER.JS", "PEGASUS MODELS"],
       demoUrl: "",
       githubUrl: ""
     },
