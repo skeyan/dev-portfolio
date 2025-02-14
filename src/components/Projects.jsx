@@ -4,11 +4,19 @@ const Projects = () => {
   const projects = [
     {
         title: "LinkedIn's modernized reporting flow",
-        description: "A complete overhaul of the web reporting flow. Write-up coming soon.",
+        description: "A complete overhaul of the web reporting flow.",
         image: "/linkedin-reportin.png",
         technologies: ["JAVASCRIPT", "EMBER.JS", "TYPESCRIPT", "GRAPHQL"],
         demoUrl: "",
         githubUrl: ""
+    },
+    {
+      title: "Rapid A/B experimentation for LinkedIn's reporting flow",
+      description: "Performed multiple A/B experiment to optimize message report action rate.",
+      image: "/reportin-messages.png",
+      technologies: ["JAVASCRIPT", "EMBER.JS", "JAVA", "GRAPHQL"],
+      demoUrl: "",
+      githubUrl: ""
     },
     {
       title: "Remy: A NYC Apartment Renter's Companion",
