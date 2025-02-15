@@ -19,10 +19,18 @@ const Projects = () => {
       githubUrl: ""
     },
     {
-      title: "Reusable form component architecture",
-      description: "Designed and lead frontend implementation of single-select form component in library used in over 20+ microservices.",
-      image: "/choice-pills.png",
-      technologies: ["JAVASCRIPT", "EMBER.JS", "PEGASUS MODELS"],
+      title: "Smart profile report cooloff UX and API",
+      description: "Designed and implemented the logic for a new cooloff period between consecutive profile reports to reduce duplicate reports.",
+      image: "/duplicate-profile.png",
+      technologies: ["JAVASCRIPT", "EMBER.JS", "JAVA"],
+      demoUrl: "",
+      githubUrl: ""
+    },
+    {
+      title: "One-to-one mapping between a profile report and its status",
+      description: "Implemented complex logic for a profile report's status page to be linked to a unique status pertaining to the report, for compliance of the Digital Services Act.",
+      image: "/profile-sh.png",
+      technologies: ["JAVA"],
       demoUrl: "",
       githubUrl: ""
     },
