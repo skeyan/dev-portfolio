@@ -19,6 +19,14 @@ const Projects = () => {
       githubUrl: ""
     },
     {
+      title: "Educational dialog system to improve feed quality and member UX",
+      description: "Led frontend development to decrease number of restricted accounts and content on LinkedIn by augmenting the content creation experience.",
+      image: "/sbe.png",
+      technologies: ["JAVASCRIPT", "EMBER.JS", "TYPESCRIPT", "GRAPHQL"],
+      demoUrl: "",
+      githubUrl: ""
+    },
+    {
       title: "Smart profile report cooloff UX and API",
       description: "Designed and implemented the logic for a new cooloff period between consecutive profile reports to reduce duplicate reports.",
       image: "/duplicate-profile.png",
