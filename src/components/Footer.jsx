@@ -23,7 +23,7 @@ const Footer = () => {
             <h3 className="footer-title">Contact Information</h3>
             <div className="contact-details">
               <p>New York, NY</p>
-              <p>eyan0749@protonmail.com</p>
+              <p>eyan0749@gmail.com</p>
             </div>
           </div>
 

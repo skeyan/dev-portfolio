@@ -21,25 +21,22 @@ const About = () => {
         </h2>
         
         <div className="about-subtitle">
-          Full-stack, visual, interactive media developer and software engineer,
+          Full-stack, visual software engineer & interactive media developer,
           specialized in <span className="emphasis">web development</span>.  
           <br></br><br></br>
-          <span className="emphasis">3 YOE</span> open to mid-level roles.
+          <span className="emphasis">4 YOE</span> open to mid-level roles.
         </div>
 
         <div className="about-grid">
           <div className="about-text">
             <h4 className="section-title">Creative technologist at heart</h4>
             <p>
-              I'm a creative developer who builds solutions to fulfill businesses' goals with UX in mind.
-            </p>
-            <p>
-              I'm constantly inspired by technology that incorporates elements that people can interact with to improve people's lives.
-              My passions lie at the interaction of technology, storytelling, and social good.
+              I'm a creative developer who builds solutions to fulfill businesses' goals with the end user in mind.
+              I am constantly inspired by technology that improves people's lives.
             </p>
             <p>
               As an engineer, I value clarity in communication and code, and strive to understand the "why" of the problem.
-              In my next play, I value growth and working with great people!
+              In my next play, I value technical depth, balance, and working with great people!
             </p>
             <p>
               While you're here, check out my resume, or{' '}
