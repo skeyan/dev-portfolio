@@ -1,4 +1,4 @@
-@import '../mixins.scss';
+@use '../mixins' as *;
 
 /* src/styles/components/navbar.css */
 .contact-button {

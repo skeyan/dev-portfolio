@@ -1,6 +1,6 @@
 /* src/styles/index.css */
-@import 'variables.scss';
-@import './components/navbar.scss';
+@use 'variables.scss';
+@use './components/navbar.scss';
 
 /* Tailwind directives */
 @tailwind base;

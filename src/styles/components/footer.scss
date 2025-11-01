@@ -1,4 +1,4 @@
-@import '../mixins.scss';
+@use '../mixins' as *;
 
 .footer {
     background-color: #333333;

@@ -1,4 +1,4 @@
-@import '../mixins.scss';
+@use '../mixins' as *;
 
 .projects {
     background-color: rgb(255, 251, 251);

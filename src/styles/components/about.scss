@@ -1,4 +1,4 @@
-@import '../mixins.scss';
+@use '../mixins' as *;
 
 .about {
     background-color: var(--background-light);
