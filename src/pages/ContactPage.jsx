@@ -45,6 +45,11 @@ const Contact = () => {
               </div>
             ))}
           </div>
+
+          <div className="contact-more-info">
+            <b>Location: </b>
+            I am based in New York City, but I am open to remote roles, or relocating to the Northeast or Pacific Northwest.
+          </div>
         </div>
       </div>
     </main>
