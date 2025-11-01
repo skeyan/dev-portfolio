@@ -20,11 +20,13 @@ const Hero = () => {
             Hi there! I'm <strong>Eva Yan</strong>, a software engineer with a passion for interactive media of all kinds!
           </h1>
           <p className="hero-subtitle">
-            Currently a mid-level SWE at <b>The New York Times</b>. <br/>
+            Currently a mid-level SWE at <b>The New York Times</b>.
+          </p>
+          <p className="hero-subtitle">
             Formerly a Senior SWE at LinkedIn, and a SWE at <b>Holler</b> and <b>Cornell Tech</b>.
           </p>
           <p className="hero-subtitle">
-            Open to <b>mid-level roles</b> (3-5 years of experience).
+            Open to <b>mid-level roles</b> (3-5 years of experience) in the Northeast, Pacific Northwest, or remote roles.
           </p>
           <div className="hero-cta-container">
             <Link to="/contact" className="hero-button">
