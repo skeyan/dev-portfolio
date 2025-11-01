@@ -6,24 +6,16 @@ Built with Vite, React, and Tailwind.
 
 ### Prerequisites
 - Node.js (version 14 or higher recommended)
-- npm or yarn package manager
+- yarn package manager
 
 ### Setup Instructions
 
 1. **Install dependencies**
    ```bash
-   npm install
-   ```
-   or if you're using yarn:
-   ```bash
    yarn install
    ```
 
 2. **Start the development server**
-   ```bash
-   npm run dev
-   ```
-   or with yarn:
    ```bash
    yarn dev
    ```
@@ -34,9 +26,9 @@ Built with Vite, React, and Tailwind.
 
 ### Other Available Commands
 
-- **Build for production**: `npm run build` (or `yarn build`)
-- **Preview production build**: `npm run preview` (or `yarn preview`)
-- **Run linter**: `npm run lint` (or `yarn lint`)
+- **Build for production**: `yarn build`
+- **Preview production build**: `yarn preview`
+- **Run linter**: `yarn lint`
 
 ## Tech Stack
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
