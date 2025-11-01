@@ -1,3 +1,5 @@
+@import '../mixins.scss';
+
 .footer {
     background-color: #333333;
     color: #ffffff;
@@ -8,6 +10,14 @@
     margin: 0 auto;
     max-width: var(--container-max-width);
     padding: 0 8rem;
+
+    @media (max-width: 1200px) {
+      padding: 0 4rem;
+    }
+
+    @include mobile {
+      padding: 0 2rem;
+    }
   }
   
   .footer-content {
@@ -15,6 +25,15 @@
     gap: 4rem;
     grid-template-columns: 2fr 1fr 1fr;
     margin-bottom: 3rem;
+
+    @media (max-width: 1200px) {
+      gap: 3rem;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
   }
   
   .footer-section {
@@ -46,6 +65,10 @@
   .social-links {
     display: flex;
     gap: 1.5rem;
+
+    @include mobile {
+      justify-content: center;
+    }
   }
   
   .social-link {
@@ -75,29 +98,4 @@
   .footer-bottom a:hover {
     color: #ffffff;
   }
-  
-  /* Responsive styles */
-  @media (max-width: 1200px) {
-    .footer-container {
-      padding: 0 4rem;
-    }
-    
-    .footer-content {
-      gap: 3rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .footer-container {
-      padding: 0 2rem;
-    }
-    
-    .footer-content {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    
-    .social-links {
-      justify-content: center;
-    }
-  }
+

@@ -1,3 +1,5 @@
+@import '../mixins.scss';
+
 .projects {
     background-color: rgb(255, 251, 251);
     padding: 6rem 0;
@@ -8,12 +10,24 @@
     margin: 0 auto;
     max-width: var(--container-max-width);
     padding: 0 8rem;
+
+    @media (max-width: 1200px) {
+      padding: 0 4rem;
+    }
+
+    @include mobile {
+      padding: 0 2rem;
+    }
   }
   
   .projects-title {
     color: var(--text-dark);
     font-size: 2.5rem;
     margin-bottom: 3rem;
+
+    @include mobile {
+      font-size: 2rem;
+    }
   }
   
   .projects-grid {
@@ -27,6 +41,10 @@
     gap: 2rem;
     grid-template-columns: 1.2fr 1fr;
     align-items: center;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr;
+    }
   }
   
   .project-image-container {
@@ -59,6 +77,10 @@
     font-weight: 600;
     padding-bottom: 0;
     margin-bottom: 0;
+
+    @include mobile {
+      font-size: 1.5rem;
+    }
   }
   
   .project-description {
@@ -109,28 +131,4 @@
     color: white;
     transform: translateY(-2px);
   }
-  
-  /* Responsive styles */
-  @media (max-width: 1200px) {
-    .projects-container {
-      padding: 0 4rem;
-    }
-    
-    .project-card {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .projects-container {
-      padding: 0 2rem;
-    }
-    
-    .projects-title {
-      font-size: 2rem;
-    }
-  
-    .project-title {
-      font-size: 1.5rem;
-    }
-  }
+

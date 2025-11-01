@@ -1,3 +1,5 @@
+@import '../mixins.scss';
+
 .contact-page {
     min-height: 100vh;
     position: relative;
@@ -42,12 +44,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 1200px) {
+      padding: 0 4rem;
+      max-width: 80%;
+    }
+
+    @include mobile {
+      padding: 0 2rem;
+      width: 80%;
+    }
   }
   
   .contact-title {
     color: var(--text-light);
     font-size: 3.5rem;
     text-align: center;
+
+    @include mobile {
+      font-size: 2.5rem;
+      margin: 3rem 0;
+    }
   }
   
   .contact-card {
@@ -57,12 +74,20 @@
     max-width: 800px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: white;
+
+    @include mobile {
+      padding: 2rem;
+    }
   }
   
   .contact-subtitle {
     color: var(--text-dark);
     font-size: 2rem;
     margin-bottom: 1rem;
+
+    @include mobile {
+      font-size: 1.5rem;
+    }
   }
   
   .contact-description {
@@ -99,31 +124,4 @@
   .contact-value:hover {
     color: var(--color-primary);
   }
-  
-  /* Responsive styles */
-  @media (max-width: 1200px) {
-    .contact-content {
-      padding: 0 4rem;
-      max-width: 80%;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .contact-content {
-      padding: 0 2rem;
-      width: 80%;
-    }
-  
-    .contact-title {
-      font-size: 2.5rem;
-      margin: 3rem 0;
-    }
-  
-    .contact-card {
-      padding: 2rem;
-    }
-  
-    .contact-subtitle {
-      font-size: 1.5rem;
-    }
-  }
+

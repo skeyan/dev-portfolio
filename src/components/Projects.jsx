@@ -1,4 +1,4 @@
-import '../styles/components/projects.css';
+import '../styles/components/projects.scss';
 
 const Projects = () => {
   const projects = [

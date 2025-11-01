@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../styles/components/about.css';
+import '../styles/components/about.scss';
 
 const About = () => {
   const technicalSkills = [

@@ -1,6 +1,6 @@
 /* src/styles/index.css */
-@import 'variables.css';
-@import './components/navbar.css';
+@import 'variables.scss';
+@import './components/navbar.scss';
 
 /* Tailwind directives */
 @tailwind base;
@@ -14,3 +14,4 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+

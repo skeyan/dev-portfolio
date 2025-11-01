@@ -1,3 +1,5 @@
+@import '../mixins.scss';
+
 /* src/styles/components/navbar.css */
 .contact-button {
     background-color: var(--text-light);
@@ -179,7 +181,7 @@
   }
   
   /* Mobile Menu Styles */
-  @media (max-width: 768px) {
+  @include mobile {
     .hamburger-menu {
       display: block; /* Show on mobile */
     }
@@ -221,3 +223,4 @@
       text-align: center;
     }
   }
+
