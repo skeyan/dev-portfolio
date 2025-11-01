@@ -98,3 +98,14 @@
 .footer-bottom a:hover {
   color: #ffffff;
 }
+
+.footer-contact-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-contact-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}

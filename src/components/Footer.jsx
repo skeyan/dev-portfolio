@@ -31,7 +31,14 @@ const Footer = () => {
             <h3 className="footer-title">Contact Information</h3>
             <div className="contact-details">
               <p>New York, NY</p>
-              <p>eyan0749@gmail.com</p>
+              <p>
+                <a
+                  href="mailto:eyan0749@gmail.com"
+                  className="footer-contact-link"
+                >
+                  eyan0749@gmail.com
+                </a>
+              </p>
             </div>
           </div>
 
