@@ -11,9 +11,9 @@ const Contact = () => {
 
   const contacts = [
     { label: 'Email: (preferred)', value: 'eyan0749@gmail.com', href: 'mailto:eyan0749@gmail.com' },
-    { label: 'LinkedIn:', value: 'sk-evayan', href: 'https://www.linkedin.com/in/sk-evayan/' },
-    { label: 'itch.io:', value: 'masotzhen', href: 'https://masotzhen.itch.io/' },
-    { label: 'Github:', value: 'skeyan', href: 'https://github.com/skeyan' }
+    { label: 'LinkedIn:', value: 'https://www.linkedin.com/in/sk-evayan', href: 'https://www.linkedin.com/in/sk-evayan/' },
+    { label: 'itch.io:', value: 'https://masotzhen.itch.io', href: 'https://masotzhen.itch.io/' },
+    { label: 'Github:', value: 'https://github.com/skeyan', href: 'https://github.com/skeyan' }
   ];
 
   return (
