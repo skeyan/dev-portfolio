@@ -2,225 +2,223 @@
 
 /* src/styles/components/navbar.css */
 .contact-button {
-    background-color: var(--text-light);
-    border-radius: 9999px;
-    color: var(--color-primary);
-    font-weight: 500;
-    padding: 0.5rem 1.25rem;
-    transition: all var(--transition-fast);
-    text-decoration: none;
-  }
-  
-  .navbar.scrolled .contact-button {
-    background-color: var(--color-primary);
-    color: var(--text-light);
-  }
-  
-  .contact-button:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-    transform: translateY(-2px);
-  }
-  
-  .navbar.scrolled .contact-button:hover {
-    background-color: var(--color-primary-dark);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .nav-link {
-    color: var(--text-light);
-    font-size: 16px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all var(--transition-fast);
-    position: relative;
+  background-color: var(--text-light);
+  border-radius: 9999px;
+  color: var(--color-primary);
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.navbar.scrolled .contact-button {
+  background-color: var(--color-primary);
+  color: var(--text-light);
+}
+
+.contact-button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.navbar.scrolled .contact-button:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  color: var(--text-light);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--text-light);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.navbar.scrolled .nav-link::after {
+  background-color: var(--color-primary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.navbar.scrolled .nav-link {
+  color: var(--text-dark);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--text-light);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.navbar.scrolled .nav-link::after {
+  background-color: var(--color-primary);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.nav-link.active {
+  color: var(--text-light);
+}
+
+.navbar.scrolled .nav-link.active {
+  color: var(--color-primary);
+}
+
+.navbar {
+  background: transparent;
+  height: var(--navbar-height);
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: all var(--transition-normal);
+  z-index: 1000;
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: var(--blur-light);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand {
+  color: var(--text-light);
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.navbar.scrolled .navbar-brand {
+  color: var(--text-dark);
+}
+
+.navbar-container {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+  padding: 0 var(--container-padding);
+}
+
+.navbar-links {
+  align-items: center;
+  display: flex;
+  gap: 2.5rem;
+}
+
+/* Hamburger */
+/* Hamburger Menu */
+.hamburger-menu {
+  display: none; /* Hide by default on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 24px;
+}
+
+.hamburger-icon span {
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-light);
+  transition: all var(--transition-fast);
+}
+
+.hamburger-icon.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-icon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-icon.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.navbar.scrolled .hamburger-icon span {
+  background-color: var(--text-dark);
+}
+
+/* Mobile Menu Styles */
+@include mobile {
+  .hamburger-menu {
+    display: block; /* Show on mobile */
   }
 
-  .nav-link::after {
-    content: '';
+  .navbar-links {
+    display: none; /* Hide desktop links on mobile */
+    flex-direction: column;
     position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: -4px;
+    top: var(--navbar-height);
     left: 0;
-    background-color: var(--text-light);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s ease;
-  }
-  
-  .navbar.scrolled .nav-link::after {
-    background-color: var(--color-primary);
-  }
-  
-  .nav-link:hover::after,
-  .nav-link.active::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
-  
-  
-  .navbar.scrolled .nav-link {
-    color: var(--text-dark);
-  }
-  
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: var(--text-light);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s ease;
-  }
-  
-  .navbar.scrolled .nav-link::after {
-    background-color: var(--color-primary);
-  }
-  
-  .nav-link:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
-  
-  .nav-link.active {
-    color: var(--text-light);
-  }
-  
-  .navbar.scrolled .nav-link.active {
-    color: var(--color-primary);
-  }
-  
-  .navbar {
-    background: transparent;
-    height: var(--navbar-height);
-    left: 0;
-    position: fixed;
     right: 0;
-    top: 0;
-    transition: all var(--transition-normal);
-    z-index: 1000;
-  }
-  
-  .navbar.scrolled {
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: var(--blur-light);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    gap: 1rem;
   }
-  
-  .navbar-brand {
-    color: var(--text-light);
-    font-size: 24px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: color var(--transition-fast);
+
+  .navbar-links.open {
+    display: flex; /* Show mobile menu when open */
   }
-  
-  .navbar.scrolled .navbar-brand {
+
+  .navbar.scrolled .navbar-links {
+    background: rgba(255, 255, 255, 0.98);
+  }
+
+  .nav-link {
+    color: var(--text-dark);
+    font-size: 18px;
+  }
+
+  .navbar.scrolled .nav-link {
     color: var(--text-dark);
   }
-  
-  .navbar-container {
-    align-items: center;
-    display: flex;
-    height: 100%;
-    justify-content: space-between;
-    margin: 0 auto;
-    max-width: var(--container-max-width);
-    padding: 0 var(--container-padding);
-  }
-  
-  .navbar-links {
-    align-items: center;
-    display: flex;
-    gap: 2.5rem;
-  }
 
-  /* Hamburger */
-  /* Hamburger Menu */
-.hamburger-menu {
-    display: none; /* Hide by default on desktop */
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    z-index: 1001;
-  }
-  
-  .hamburger-icon {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    width: 24px;
-  }
-  
-  .hamburger-icon span {
+  .contact-button {
     width: 100%;
-    height: 2px;
-    background-color: var(--text-light);
-    transition: all var(--transition-fast);
+    text-align: center;
   }
-  
-  .hamburger-icon.open span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  
-  .hamburger-icon.open span:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .hamburger-icon.open span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
-  
-  .navbar.scrolled .hamburger-icon span {
-    background-color: var(--text-dark);
-  }
-  
-  /* Mobile Menu Styles */
-  @include mobile {
-    .hamburger-menu {
-      display: block; /* Show on mobile */
-    }
-  
-    .navbar-links {
-      display: none; /* Hide desktop links on mobile */
-      flex-direction: column;
-      position: absolute;
-      top: var(--navbar-height);
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: var(--blur-light);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      padding: 1rem;
-      gap: 1rem;
-    }
-  
-    .navbar-links.open {
-      display: flex; /* Show mobile menu when open */
-    }
-  
-    .navbar.scrolled .navbar-links {
-      background: rgba(255, 255, 255, 0.98);
-    }
-  
-    .nav-link {
-      color: var(--text-dark);
-      font-size: 18px;
-    }
-  
-    .navbar.scrolled .nav-link {
-      color: var(--text-dark);
-    }
-  
-    .contact-button {
-      width: 100%;
-      text-align: center;
-    }
-  }
-
+}

@@ -1,15 +1,15 @@
 @use '../mixins' as *;
 
 .contact-page {
-    min-height: 100vh;
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: var(--navbar-height);
-  }
-  
+  min-height: 100vh;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--navbar-height);
+}
+
 .contact-background {
   position: absolute;
   top: 0;

@@ -1,31 +1,30 @@
 :root {
-    /* Colors */
-    --color-primary: #ff9a9e;
-    --color-primary-dark: #fa8072;
-    --color-primary-light: #fad0c4;
-    
-    /* Gradients */
-    --gradient-hero: linear-gradient(120deg, #e8666a 0%, #fad0c4 100%);
-    
-    /* Text Colors */
-    --text-dark: #333333;
-    --text-light: #ffffff;
-    
-    /* Fonts */
-    --font-heading: 'League Spartan', sans-serif;
-    --font-body: 'Open Sans', sans-serif;
-    
-    /* Spacing */
-    --navbar-height: 80px;
-    --container-padding: 2rem;
-    --container-max-width: 1200px;
-    
-    /* Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
-    
-    /* Effects */
-    --blur-light: blur(5px);
-    --shadow-normal: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
+  /* Colors */
+  --color-primary: #ff9a9e;
+  --color-primary-dark: #fa8072;
+  --color-primary-light: #fad0c4;
 
+  /* Gradients */
+  --gradient-hero: linear-gradient(120deg, #e8666a 0%, #fad0c4 100%);
+
+  /* Text Colors */
+  --text-dark: #333333;
+  --text-light: #ffffff;
+
+  /* Fonts */
+  --font-heading: 'League Spartan', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+
+  /* Spacing */
+  --navbar-height: 80px;
+  --container-padding: 2rem;
+  --container-max-width: 1200px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+
+  /* Effects */
+  --blur-light: blur(5px);
+  --shadow-normal: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
