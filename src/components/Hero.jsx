@@ -5,8 +5,11 @@ import '../styles/components/hero.scss';
 const Hero = () => {
   useEffect(() => {
     if (window.particlesJS) {
-      window.particlesJS.load('particles-js', '/particles.json', function(response) {
-      });
+      window.particlesJS.load(
+        'particles-js',
+        '/particles.json',
+        function (response) {}
+      );
     }
   }, []);
 
@@ -17,28 +20,35 @@ const Hero = () => {
       <div className="hero-content">
         <div className="hero-text">
           <h1 className="hero-title">
-            Hi there! I'm <strong>Eva Yan</strong>, a software engineer with a passion for interactive media of all kinds!
+            Hi there! I'm <strong>Eva Yan</strong>, a software engineer with a
+            passion for interactive media of all kinds!
           </h1>
           <p className="hero-subtitle">
             Currently a mid-level SWE at <b>The New York Times</b>.
           </p>
           <p className="hero-subtitle">
-            Formerly a Senior SWE at LinkedIn, and a SWE at <b>Holler</b> and <b>Cornell Tech</b>.
+            Formerly a Senior SWE at <b>LinkedIn</b>, and a SWE at <b>Holler</b>{' '}
+            and <b>Cornell Tech</b>.
           </p>
           <p className="hero-subtitle">
-            Open to <b>mid-level roles</b> (3-5 years of experience) in the Northeast, Pacific Northwest, or remote roles.
+            Open to <b>mid-level roles</b> (3-5 years of experience) in the
+            Northeast, Pacific Northwest, or remote roles.
           </p>
           <div className="hero-cta-container">
             <Link to="/contact" className="hero-button">
               Get in touch
             </Link>
-            <button 
-              onClick={() => window.open('/files/YanEva2025.pdf')}
+            <button
+              onClick={() => window.open('/files/YanEvaNov2025.pdf')}
               className="hero-button"
             >
               Download resume
             </button>
-            <a href="http://www.linkedin.com/in/sk-evayan" target="_blank" className="hero-button">
+            <a
+              href="http://www.linkedin.com/in/sk-evayan"
+              target="_blank"
+              className="hero-button"
+            >
               View LinkedIn Profile
             </a>
           </div>

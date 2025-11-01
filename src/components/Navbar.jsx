@@ -17,22 +17,23 @@ const Navbar = () => {
 
   // Helper function to determine which section is currently in view
   const determineSectionInView = () => {
-    const sections = ['hero', 'about', 'projects'].map(id => 
-      document.getElementById(id)
-    ).filter(Boolean);
+    const sections = ['hero', 'about', 'projects']
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
 
-    const viewportMiddle = window.scrollY + (window.innerHeight / 3);
-    
+    const viewportMiddle = window.scrollY + window.innerHeight / 3;
+
     // Get all section positions
-    const sectionPositions = sections.map(section => ({
+    const sectionPositions = sections.map((section) => ({
       id: section.id,
       top: getTopOffset(section),
-      bottom: getTopOffset(section) + section.offsetHeight
+      bottom: getTopOffset(section) + section.offsetHeight,
     }));
 
     // Find the current section
-    const currentSection = sectionPositions.find(section => 
-      viewportMiddle >= section.top && viewportMiddle < section.bottom
+    const currentSection = sectionPositions.find(
+      (section) =>
+        viewportMiddle >= section.top && viewportMiddle < section.bottom
     );
 
     // If at the very top, set to hero/home
@@ -43,7 +44,10 @@ const Navbar = () => {
     // If we found a section, use it, otherwise use the last section if we're at the bottom
     if (currentSection) {
       return currentSection.id;
-    } else if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
+    } else if (
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 100
+    ) {
       return sections[sections.length - 1].id;
     }
 
@@ -76,15 +80,16 @@ const Navbar = () => {
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
-    
+
     if (element) {
       const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - navbarHeight;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth"
+        behavior: 'smooth',
       });
     }
   };
@@ -128,8 +133,8 @@ const Navbar = () => {
         <Link to="/" className="navbar-brand">
           EVA YAN.
         </Link>
-        
-        <button 
+
+        <button
           className="hamburger-menu"
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
@@ -142,37 +147,37 @@ const Navbar = () => {
         </button>
 
         <div className={`navbar-links ${isMobileMenuOpen ? 'open' : ''}`}>
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className={getNavLinkClass('home')}
             onClick={(e) => handleNavLinkClick(e, '')}
           >
             Home
           </Link>
-          <a 
-            href="#about" 
+          <a
+            href="#about"
             className={getNavLinkClass('about')}
             onClick={(e) => handleNavLinkClick(e, 'about')}
           >
             About
           </a>
-          <a 
-            href="#projects" 
+          <a
+            href="#projects"
             className={getNavLinkClass('projects')}
             onClick={(e) => handleNavLinkClick(e, 'projects')}
           >
             Projects
           </a>
-          <a 
-            href="/files/YanEva2025.pdf" 
-            target="_blank" 
+          <a
+            href="/files/YanEvaNov2025.pdf"
+            target="_blank"
             rel="noopener noreferrer"
             className="nav-link"
           >
             Resume
           </a>
-          <Link 
-            to="/contact" 
+          <Link
+            to="/contact"
             className="contact-button"
             onClick={handleContactClick}
           >
