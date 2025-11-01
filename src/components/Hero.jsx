@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/components/hero.css';
+import '../styles/components/hero.scss';
 
 const Hero = () => {
   useEffect(() => {
