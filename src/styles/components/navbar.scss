@@ -1,6 +1,5 @@
 @use '../mixins' as *;
 
-/* src/styles/components/navbar.css */
 .contact-button {
   background-color: var(--background-button-dark);
   border-radius: 9999px;
@@ -53,7 +52,7 @@
 }
 
 .navbar.scrolled .nav-link::after {
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-darker);
 }
 
 .nav-link:hover::after,
@@ -63,7 +62,7 @@
 }
 
 .navbar.scrolled .nav-link {
-  color: var(--text-dark);
+  color: var(--color-primary-darker);
 }
 
 .nav-link::after {
@@ -93,7 +92,7 @@
 }
 
 .navbar.scrolled .nav-link.active {
-  color: var(--color-primary);
+  color: var(--color-primary-darker);
 }
 
 .navbar {
