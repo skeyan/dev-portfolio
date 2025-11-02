@@ -2,9 +2,9 @@
 
 /* src/styles/components/navbar.css */
 .contact-button {
-  background-color: var(--text-light);
+  background-color: var(--background-button-dark);
   border-radius: 9999px;
-  color: var(--color-primary);
+  color: var(--text-light);
   font-weight: 500;
   padding: 0.5rem 1.25rem;
   transition: all var(--transition-fast);
@@ -12,18 +12,19 @@
 }
 
 .navbar.scrolled .contact-button {
-  background-color: var(--color-primary);
+  background-color: var(--background-button-dark);
   color: var(--text-light);
 }
 
 .contact-button:hover {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: var(--background-button-dark-hover);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-dark);
 }
 
 .navbar.scrolled .contact-button:hover {
-  background-color: var(--color-primary-dark);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: var(--background-button-dark-hover);
+  box-shadow: var(--shadow-dark);
 }
 
 .nav-link {
