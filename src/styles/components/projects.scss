@@ -120,9 +120,9 @@
 
 .project-link {
   background-color: transparent;
-  border: 2px solid var(--background-dark);
+  border: 2px solid var(--color-button-cta);
   border-radius: 9999px;
-  color: var(--background-dark);
+  color: var(--color-button-cta);
   font-size: 0.875rem;
   font-weight: 500;
   padding: 0.75rem 1.5rem;
@@ -131,7 +131,8 @@
 }
 
 .project-link:hover {
-  background-color: var(--background-dark);
+  background-color: var(--color-button-cta-hover);
+  border-color: var(--color-button-cta-hover);
   color: var(--text-light);
   box-shadow: var(--shadow-dark);
   transform: translateY(-2px);

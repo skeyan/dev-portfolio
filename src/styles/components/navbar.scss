@@ -7,12 +7,15 @@
   color: var(--text-light);
   font-weight: 500;
   padding: 0.5rem 1.25rem;
-  transition: all var(--transition-fast);
+  transition:
+    background-color var(--transition-normal),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
   text-decoration: none;
 }
 
 .navbar.scrolled .contact-button {
-  background-color: var(--background-button-dark);
+  background-color: var(--color-button-cta);
   color: var(--text-light);
 }
 
@@ -23,7 +26,7 @@
 }
 
 .navbar.scrolled .contact-button:hover {
-  background-color: var(--background-button-dark-hover);
+  background-color: var(--color-button-cta-hover);
   box-shadow: var(--shadow-dark);
 }
 
