@@ -55,6 +55,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include mobile {
+    min-height: 0;
+  }
 }
 
 .project-image {
@@ -73,6 +77,10 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  @include mobile {
+    gap: 1rem;
+  }
 }
 
 .project-title {
@@ -94,6 +102,10 @@
   line-height: 1.6;
   padding-top: 0;
   margin-top: 0;
+
+  @include mobile {
+    margin-bottom: 0;
+  }
 }
 
 .project-technologies {
