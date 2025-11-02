@@ -168,10 +168,11 @@
   height: 2px;
   background-color: var(--text-light);
   transition: all var(--transition-fast);
+  transform-origin: center;
 }
 
 .hamburger-icon.open span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: translateY(6px) rotate(45deg);
 }
 
 .hamburger-icon.open span:nth-child(2) {
@@ -179,7 +180,7 @@
 }
 
 .hamburger-icon.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .navbar.scrolled .hamburger-icon span {
@@ -193,22 +194,35 @@
   }
 
   .navbar-links {
-    display: none; /* Hide desktop links on mobile */
+    display: flex; /* Always in DOM for transitions */
     flex-direction: column;
     position: absolute;
     top: var(--navbar-height);
-    left: 0;
-    right: 0;
+    right: var(--container-padding);
+    width: auto;
+    min-width: 200px;
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: var(--blur-light);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     padding: 1rem;
     gap: 1rem;
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+    pointer-events: none;
+    transition: 
+      opacity var(--transition-normal),
+      transform var(--transition-normal),
+      visibility var(--transition-normal);
+    visibility: hidden;
   }
 
   .navbar-links.open {
-    display: flex; /* Show mobile menu when open */
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    visibility: visible;
   }
 
   .navbar.scrolled .navbar-links {
@@ -224,8 +238,41 @@
     color: var(--text-dark);
   }
 
-  .contact-button {
+  .navbar-links .contact-button {
+    width: auto;
+    text-align: left;
+    background-color: transparent;
+    color: var(--text-dark);
+    font-size: 18px;
+    font-weight: 700;
+    padding: 0;
+    border-radius: 0;
+    transform: none;
+    box-shadow: none;
+    position: relative;
+  }
+
+  .navbar-links .contact-button:hover {
+    background-color: transparent;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .navbar-links .contact-button::after {
+    content: '';
+    position: absolute;
     width: 100%;
-    text-align: center;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+  }
+
+  .navbar-links .contact-button:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
   }
 }

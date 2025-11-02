@@ -1,6 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { LINKS } from '../config/links';
+import { useFocusTrap } from '../hooks/useFocusTrap';
+import { useEscapeKey } from '../hooks/useEscapeKey';
 import '../styles/components/navbar.scss';
 
 const Navbar = () => {
@@ -10,14 +12,24 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const lastScrollY = useRef(0);
+  const mobileMenuRef = useRef(null);
+  const hamburgerButtonRef = useRef(null);
+  const navbarRef = useRef(null);
 
-  // Helper function to get element's distance from top of page
+  /**
+   * Calculates the absolute distance of an element from the top of the page.
+   * @param {HTMLElement} element - The element to measure
+   * @returns {number} The distance from the top of the page in pixels
+   */
   const getTopOffset = (element) => {
     const rect = element.getBoundingClientRect();
     return rect.top + window.scrollY;
   };
 
-  // Helper function to determine which section is currently in view
+  /**
+   * Determines which section is currently in the viewport based on scroll position.
+   * @returns {string} The ID of the active section ('home', 'about', 'projects', or current activeSection)
+   */
   const determineSectionInView = () => {
     const sections = ['hero', 'about', 'projects']
       .map((id) => document.getElementById(id))
@@ -105,11 +117,15 @@ const Navbar = () => {
     }
   }, [location.pathname]);
 
-  const scrollToSection = (sectionId) => {
+  /**
+   * Smoothly scrolls to a specific section, accounting for navbar height offset.
+   * @param {string} sectionId - The ID of the section to scroll to
+   */
+  const scrollToSection = useCallback((sectionId) => {
     const element = document.getElementById(sectionId);
 
     if (element) {
-      const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+      const navbarHeight = navbarRef.current?.offsetHeight || 0;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition =
         elementPosition + window.pageYOffset - navbarHeight;
@@ -119,9 +135,14 @@ const Navbar = () => {
         behavior: 'smooth',
       });
     }
-  };
+  }, []);
 
-  const handleNavLinkClick = (e, sectionId) => {
+  /**
+   * Handles navigation link clicks, navigating to section or homepage and closing mobile menu.
+   * @param {Event} e - The click event
+   * @param {string} sectionId - The ID of the section to navigate to
+   */
+  const handleNavLinkClick = useCallback((e, sectionId) => {
     e.preventDefault();
 
     if (sectionId === '') {
@@ -139,59 +160,118 @@ const Navbar = () => {
     }
 
     setIsMobileMenuOpen(false);
-  };
+    hamburgerButtonRef.current?.focus();
+  }, [navigate, location.pathname, scrollToSection]);
 
-  const getNavLinkClass = (section) => {
+  /**
+   * Returns the CSS class string for a nav link based on whether it's the active section.
+   * @param {string} section - The section identifier
+   * @returns {string} The CSS class string
+   */
+  const getNavLinkClass = useCallback((section) => {
     return `nav-link ${activeSection === section ? 'active' : ''}`;
-  };
+  }, [activeSection]);
 
-  const handleContactClick = (e) => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  /**
+   * Closes the mobile menu and returns focus to the hamburger button.
+   */
+  const closeMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
-  };
+    hamburgerButtonRef.current?.focus();
+  }, []);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  /**
+   * Handles contact button click, scrolls to top and closes mobile menu.
+   * @param {Event} e - The click event
+   */
+  const handleContactClick = useCallback((e) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    closeMobileMenu();
+  }, [closeMobileMenu]);
+
+  /**
+   * Toggles the mobile menu open/closed state.
+   */
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen((prev) => !prev);
+  }, []);
+
+  // Handle ESC key to close menu
+  useEscapeKey(closeMobileMenu, isMobileMenuOpen);
+
+  // Focus trap for mobile menu
+  useFocusTrap(mobileMenuRef, isMobileMenuOpen, true);
+
+  // Memoize computed class names
+  const navbarClassName = useMemo(
+    () => `navbar ${isScrolled ? 'scrolled' : ''}`,
+    [isScrolled]
+  );
+
+  const hamburgerIconClassName = useMemo(
+    () => `hamburger-icon ${isMobileMenuOpen ? 'open' : ''}`,
+    [isMobileMenuOpen]
+  );
+
+  const navbarLinksClassName = useMemo(
+    () => `navbar-links ${isMobileMenuOpen ? 'open' : ''}`,
+    [isMobileMenuOpen]
+  );
+
+  const hamburgerAriaLabel = useMemo(
+    () => (isMobileMenuOpen ? 'Close menu' : 'Open menu'),
+    [isMobileMenuOpen]
+  );
+
+  // Memoize click handlers for nav links
+  const handleHomeClick = useCallback((e) => handleNavLinkClick(e, ''), [handleNavLinkClick]);
+  const handleAboutClick = useCallback((e) => handleNavLinkClick(e, 'about'), [handleNavLinkClick]);
+  const handleProjectsClick = useCallback((e) => handleNavLinkClick(e, 'projects'), [handleNavLinkClick]);
 
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+    <nav ref={navbarRef} className={navbarClassName}>
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
           {'<EY />'}
         </Link>
 
         <button
+          ref={hamburgerButtonRef}
           className="hamburger-menu"
           onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
+          aria-label={hamburgerAriaLabel}
+          aria-expanded={isMobileMenuOpen}
         >
-          <div className={`hamburger-icon ${isMobileMenuOpen ? 'open' : ''}`}>
+          <div className={hamburgerIconClassName}>
             <span></span>
             <span></span>
             <span></span>
           </div>
         </button>
 
-        <div className={`navbar-links ${isMobileMenuOpen ? 'open' : ''}`}>
+        <div 
+          ref={mobileMenuRef}
+          className={navbarLinksClassName}
+          aria-hidden={!isMobileMenuOpen}
+        >
           <Link
             to="/"
             className={getNavLinkClass('home')}
-            onClick={(e) => handleNavLinkClick(e, '')}
+            onClick={handleHomeClick}
           >
             Home
           </Link>
           <a
             href="#about"
             className={getNavLinkClass('about')}
-            onClick={(e) => handleNavLinkClick(e, 'about')}
+            onClick={handleAboutClick}
           >
             About
           </a>
           <a
             href="#projects"
             className={getNavLinkClass('projects')}
-            onClick={(e) => handleNavLinkClick(e, 'projects')}
+            onClick={handleProjectsClick}
           >
             Projects
           </a>
