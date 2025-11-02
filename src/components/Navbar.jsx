@@ -131,7 +131,7 @@ const Navbar = () => {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
-          EVA YAN.
+          {'<EY />'}
         </Link>
 
         <button

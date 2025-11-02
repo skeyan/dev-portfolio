@@ -67,9 +67,22 @@
   font-weight: 400;
   line-height: 1.2;
   margin-bottom: 1.5rem;
+}
+
+.hero-title--desktop {
+  display: block;
 
   @include mobile {
-    font-size: 2rem;
+    display: none;
+  }
+}
+
+.hero-title--mobile {
+  display: none;
+
+  @include mobile {
+    display: block;
+    font-size: 3rem;
   }
 }
 
@@ -92,6 +105,22 @@
 
 .hero-subtitle:not(:last-child) {
   margin-bottom: 1rem;
+}
+
+.hero-subtitles--desktop {
+  display: block;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.hero-subtitles--mobile {
+  display: none;
+
+  @include mobile {
+    display: block;
+  }
 }
 
 .hero-subtitle b {

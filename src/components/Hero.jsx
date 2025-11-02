@@ -13,16 +13,30 @@ const Hero = () => {
     }
   }, []);
 
-  return (
-    <section id="hero" className="hero">
-      <div className="hero-gradient"></div>
-      <div id="particles-js" className="hero-particles"></div>
-      <div className="hero-content">
-        <div className="hero-text">
-          <h1 className="hero-title">
-            Hi there! I'm <strong>Eva Yan</strong>, a software engineer with a
-            passion for interactive media of all kinds!
-          </h1>
+  const variants = ['desktop', 'mobile'];
+
+  const getHeroTitle = (variant) => {
+    const titleContent = {
+      desktop: (
+        <>
+          Hi there! I'm <strong>Eva Yan</strong>, a software engineer with a
+          passion for interactive media of all kinds!
+        </>
+      ),
+      mobile: <strong>Eva Yan</strong>,
+    };
+
+    return (
+      <h1 key={variant} className={`hero-title hero-title--${variant}`}>
+        {titleContent[variant]}
+      </h1>
+    );
+  };
+
+  const getHeroSubtitles = (variant) => {
+    const subtitlesContent = {
+      desktop: (
+        <>
           <p className="hero-subtitle">
             Currently a mid-level SWE at <b>The New York Times</b>.
           </p>
@@ -34,6 +48,44 @@ const Hero = () => {
             Open to <b>mid-level roles</b> (3-5 years of experience) in the
             Northeast, Pacific Northwest, or remote roles.
           </p>
+        </>
+      ),
+      mobile: (
+        <>
+          <p className="hero-subtitle">
+            Mid-level SWE at <b>The New York Times</b>
+          </p>
+          <p className="hero-subtitle">
+            Formerly at <b>LinkedIn</b>, <b>Holler</b>, and <b>Cornell Tech</b>
+          </p>
+          <p className="hero-subtitle">
+            Open to <b>mid-level roles</b> in Northeast, PNW, or remote
+          </p>
+        </>
+      ),
+    };
+
+    return (
+      <div
+        key={variant}
+        className={`hero-subtitles hero-subtitles--${variant}`}
+      >
+        {subtitlesContent[variant]}
+      </div>
+    );
+  };
+
+  const renderHeroTitle = () => variants.map(getHeroTitle);
+  const renderHeroSubtitles = () => variants.map(getHeroSubtitles);
+
+  return (
+    <section id="hero" className="hero">
+      <div className="hero-gradient"></div>
+      <div id="particles-js" className="hero-particles"></div>
+      <div className="hero-content">
+        <div className="hero-text">
+          {renderHeroTitle()}
+          {renderHeroSubtitles()}
           <div className="hero-cta-container">
             <Link to="/contact" className="hero-button">
               Get in touch
