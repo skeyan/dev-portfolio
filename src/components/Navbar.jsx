@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { LINKS } from '../config/links';
 import { useFocusTrap } from '../hooks/useFocusTrap';
 import { useEscapeKey } from '../hooks/useEscapeKey';
+import { useClickOutside } from '../hooks/useClickOutside';
 import '../styles/components/navbar.scss';
 
 const Navbar = () => {
@@ -201,6 +202,9 @@ const Navbar = () => {
 
   // Focus trap for mobile menu
   useFocusTrap(mobileMenuRef, isMobileMenuOpen, true);
+
+  // Handle click outside to close mobile menu
+  useClickOutside([mobileMenuRef, hamburgerButtonRef], closeMobileMenu, isMobileMenuOpen);
 
   // Memoize computed class names
   const navbarClassName = useMemo(
