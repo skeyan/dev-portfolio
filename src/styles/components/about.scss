@@ -73,8 +73,9 @@
 }
 
 .text-link {
-  color: var(--color-primary);
-  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 600;
+  text-decoration: underline;
   transition: opacity var(--transition-fast);
 }
 
