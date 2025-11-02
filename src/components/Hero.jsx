@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Envelope, Download, LinkedinLogo } from '@phosphor-icons/react';
 import { LINKS, Company, companies } from '../config/links';
 import '../styles/components/hero.scss';
 
@@ -106,22 +107,31 @@ const Hero = () => {
           {renderHeroTitle()}
           {renderHeroSubtitles()}
           <div className="hero-cta-container">
-            <Link to="/contact" className="hero-button">
-              Get in touch
+            <Link
+              to="/contact"
+              className="hero-button"
+              aria-label="Get in touch"
+              title="Get in touch"
+            >
+              <Envelope size={24} weight="regular" aria-hidden="true" />
             </Link>
             <button
               onClick={() => window.open(LINKS.RESUME)}
               className="hero-button"
+              aria-label="Download resume"
+              title="Download resume"
             >
-              Download resume
+              <Download size={24} weight="regular" aria-hidden="true" />
             </button>
             <a
               href={LINKS.LINKEDIN}
               target="_blank"
               rel="noopener noreferrer"
               className="hero-button"
+              aria-label="View LinkedIn Profile"
+              title="View LinkedIn Profile"
             >
-              View LinkedIn Profile
+              <LinkedinLogo size={24} weight="regular" aria-hidden="true" />
             </a>
           </div>
         </div>
