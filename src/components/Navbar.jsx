@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../styles/components/navbar.scss';
 
@@ -8,6 +8,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const lastScrollY = useRef(0);
 
   // Helper function to get element's distance from top of page
   const getTopOffset = (element) => {
@@ -55,21 +56,46 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    let ticking = false;
 
-      if (location.pathname === '/') {
-        // Update active section only on homepage
-        const newSection = determineSectionInView();
-        if (newSection !== activeSection) {
-          setActiveSection(newSection);
-        }
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          const isScrollingDown = scrollY > lastScrollY.current;
+
+          // Use hysteresis (different thresholds for up/down) to prevent flickering
+          // See: https://stackoverflow.com/questions/5357918/what-does-hysteresis-mean-and-how-does-it-apply-to-computer-science-or-programmi
+          if (isScrollingDown) {
+            // Scrolling down: activate at 100px
+            if (scrollY > 100 && !isScrolled) {
+              setIsScrolled(true);
+            }
+          } else {
+            // Scrolling up: deactivate at 50px
+            if (scrollY < 50 && isScrolled) {
+              setIsScrolled(false);
+            }
+          }
+
+          lastScrollY.current = scrollY;
+
+          if (location.pathname === '/') {
+            // Update active section only on homepage
+            const newSection = determineSectionInView();
+            if (newSection !== activeSection) {
+              setActiveSection(newSection);
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeSection, location.pathname]);
+  }, [activeSection, location.pathname, isScrolled]);
 
   useEffect(() => {
     // Reset activeSection when navigating away from the homepage
