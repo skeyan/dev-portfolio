@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { LINKS, Company, companies } from '../config/links';
 import '../styles/components/hero.scss';
 
 const Hero = () => {
@@ -14,6 +15,21 @@ const Hero = () => {
   }, []);
 
   const variants = ['desktop', 'mobile'];
+
+  // Helper function to render company link
+  const renderCompanyLink = (companyKey) => {
+    const company = companies[companyKey];
+    return (
+      <a
+        href={company.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hero-company-link"
+      >
+        <b>{company.name}</b>
+      </a>
+    );
+  };
 
   const getHeroTitle = (variant) => {
     const titleContent = {
@@ -38,11 +54,12 @@ const Hero = () => {
       desktop: (
         <>
           <p className="hero-subtitle">
-            Currently a mid-level SWE at <b>The New York Times</b>.
+            Currently a mid-level SWE at {renderCompanyLink(Company.NYTIMES)}.
           </p>
           <p className="hero-subtitle">
-            Formerly a Senior SWE at <b>LinkedIn</b>, and a SWE at <b>Holler</b>{' '}
-            and <b>Cornell Tech</b>.
+            Formerly a Senior SWE at {renderCompanyLink(Company.LINKEDIN)}, and
+            a SWE at {renderCompanyLink(Company.HOLLER)} and{' '}
+            {renderCompanyLink(Company.CORNELL_TECH)}.
           </p>
           <p className="hero-subtitle">
             Open to <b>mid-level roles</b> (3-5 years of experience) in the
@@ -53,10 +70,12 @@ const Hero = () => {
       mobile: (
         <>
           <p className="hero-subtitle">
-            Mid-level SWE at <b>The New York Times</b>
+            Mid-level SWE at {renderCompanyLink(Company.NYTIMES)}
           </p>
           <p className="hero-subtitle">
-            Formerly at <b>LinkedIn</b>, <b>Holler</b>, and <b>Cornell Tech</b>
+            Formerly at {renderCompanyLink(Company.LINKEDIN)},{' '}
+            {renderCompanyLink(Company.HOLLER)}, and{' '}
+            {renderCompanyLink(Company.CORNELL_TECH)}
           </p>
           <p className="hero-subtitle">
             Open to <b>mid-level roles</b> in Northeast, PNW, or remote
@@ -91,14 +110,15 @@ const Hero = () => {
               Get in touch
             </Link>
             <button
-              onClick={() => window.open('/files/YanEvaNov2025.pdf')}
+              onClick={() => window.open(LINKS.RESUME)}
               className="hero-button"
             >
               Download resume
             </button>
             <a
-              href="http://www.linkedin.com/in/sk-evayan"
+              href={LINKS.LINKEDIN}
               target="_blank"
+              rel="noopener noreferrer"
               className="hero-button"
             >
               View LinkedIn Profile

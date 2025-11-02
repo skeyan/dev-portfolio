@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { LINKS } from '../config/links';
 import '../styles/components/about.scss';
 
 const About = () => {
@@ -55,7 +56,7 @@ const About = () => {
             <p>
               While you're here, check out my resume, or{' '}
               <a
-                href="https://www.linkedin.com/in/sk-evayan/"
+                href={LINKS.LINKEDIN}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-link"
@@ -66,7 +67,7 @@ const About = () => {
             </p>
             <button
               className="resume-button"
-              onClick={() => window.open('/files/YanEvaNov2025.pdf')}
+              onClick={() => window.open(LINKS.RESUME)}
             >
               Download Resume
             </button>

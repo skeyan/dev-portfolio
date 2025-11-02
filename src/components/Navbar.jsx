@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { LINKS } from '../config/links';
 import '../styles/components/navbar.scss';
 
 const Navbar = () => {
@@ -195,7 +196,7 @@ const Navbar = () => {
             Projects
           </a>
           <a
-            href="/files/YanEvaNov2025.pdf"
+            href={LINKS.RESUME}
             target="_blank"
             rel="noopener noreferrer"
             className="nav-link"

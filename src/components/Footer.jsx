@@ -1,5 +1,6 @@
 import '../styles/components/footer.scss';
 import { SocialIcon } from 'react-social-icons';
+import { LINKS } from '../config/links';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -45,21 +46,21 @@ const Footer = () => {
           <div className="footer-section">
             <div className="social-links">
               <SocialIcon
-                url="https://www.linkedin.com/in/sk-evayan/"
+                url={LINKS.LINKEDIN}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"
                 aria-label="LinkedIn"
               />
               <SocialIcon
-                url="https://github.com/skeyan"
+                url={LINKS.GITHUB}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"
                 aria-label="GitHub"
               />
               <SocialIcon
-                url="https://masotzhen.itch.io/"
+                url={LINKS.ITCH_IO}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"

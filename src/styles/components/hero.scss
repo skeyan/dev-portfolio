@@ -128,6 +128,21 @@
   font-weight: 600;
 }
 
+.hero-company-link {
+  color: inherit;
+  text-decoration: underline;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  b {
+    color: var(--text-dark);
+    font-weight: 600;
+  }
+}
+
 .hero-cta-container {
   margin-top: 2rem;
 }
