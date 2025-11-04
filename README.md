@@ -62,6 +62,8 @@ This portfolio is built using modern web technologies to ensure fast performance
 
 ### UI Components & Icons
 
+- React Icons
+
 - **[React Social Icons](https://github.com/couetilc/react-social-icons)** - React component library for displaying social media icons. Used in the Footer component to render clickable social media links with branded icons.
 
 ### Development Tools

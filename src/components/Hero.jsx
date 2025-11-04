@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Envelope, Download, LinkedinLogo } from '@phosphor-icons/react';
+import { IoCloudDownloadOutline } from 'react-icons/io5';
+import { AiOutlineMail } from 'react-icons/ai';
+import { PiLinkedinLogo } from 'react-icons/pi';
+
 import { LINKS, Company, companies } from '../config/links';
 import '../styles/components/hero.scss';
 
@@ -113,7 +116,7 @@ const Hero = () => {
               aria-label="Get in touch"
               title="Get in touch"
             >
-              <Envelope size={24} weight="regular" aria-hidden="true" />
+              <AiOutlineMail />
             </Link>
             <button
               onClick={() => window.open(LINKS.RESUME)}
@@ -121,7 +124,7 @@ const Hero = () => {
               aria-label="Download resume"
               title="Download resume"
             >
-              <Download size={24} weight="regular" aria-hidden="true" />
+              <IoCloudDownloadOutline />
             </button>
             <a
               href={LINKS.LINKEDIN}
@@ -131,7 +134,7 @@ const Hero = () => {
               aria-label="View LinkedIn Profile"
               title="View LinkedIn Profile"
             >
-              <LinkedinLogo size={24} weight="regular" aria-hidden="true" />
+              <PiLinkedinLogo />
             </a>
           </div>
         </div>
