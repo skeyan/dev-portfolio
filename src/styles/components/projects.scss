@@ -108,6 +108,19 @@
   }
 }
 
+.project-caption {
+  color: var(--text-subtitle);
+  font-weight: 600;
+  font-size: 1.2rem;
+  font-variant: small-caps;
+  margin: 0.5rem auto 0;
+
+  svg {
+    margin-right: 2px;
+    vertical-align: middle;
+  }
+}
+
 .project-technologies {
   display: flex;
   flex-wrap: wrap;

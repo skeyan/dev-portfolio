@@ -1,11 +1,14 @@
 import '../styles/components/projects.scss';
+import { FaLinkedin } from 'react-icons/fa';
+import { SiNewyorktimes } from 'react-icons/si';
 
 const Projects = () => {
   const projects = [
     {
       title: 'Engineering at The New York Times',
       description:
-        'Coming soon: Details about my engineering work at The New York Times. See my resume for more details!',
+        'Coming soon: Details about my engineering work at The New York Times. See my resume for more info!',
+      association: 'The New York Times',
       image: null,
       technologies: [],
       demoUrl: '',
@@ -15,6 +18,7 @@ const Projects = () => {
       title: "LinkedIn's modernized reporting flow",
       description:
         'A complete overhaul of the web reporting flow to improve developer efficiency and member experience.',
+      association: 'LinkedIn',
       image: '/linkedin-reportin.png',
       technologies: ['JAVASCRIPT', 'EMBER.JS', 'TYPESCRIPT', 'GRAPHQL'],
       demoUrl: '',
@@ -24,6 +28,7 @@ const Projects = () => {
       title: "Rapid A/B experimentation for LinkedIn's reporting flow",
       description:
         'Performed multiple A/B experiments to optimize message report action rate.',
+      association: 'LinkedIn',
       image: '/reportin-messages.png',
       technologies: ['JAVASCRIPT', 'EMBER.JS', 'JAVA', 'GRAPHQL'],
       demoUrl: '',
@@ -33,6 +38,7 @@ const Projects = () => {
       title: 'Educational dialog system to improve feed quality and member UX',
       description:
         'Led frontend development to decrease number of restricted accounts and content on LinkedIn by augmenting the content creation experience.',
+      association: 'LinkedIn',
       image: '/sbe.png',
       technologies: ['JAVASCRIPT', 'EMBER.JS', 'TYPESCRIPT', 'GRAPHQL'],
       demoUrl: '',
@@ -42,6 +48,7 @@ const Projects = () => {
       title: 'Smart profile report cooloff UX and API',
       description:
         'Designed and implemented the logic for a new cooloff period between consecutive profile reports to reduce duplicate reports.',
+      association: 'LinkedIn',
       image: '/duplicate-profile.png',
       technologies: ['JAVASCRIPT', 'EMBER.JS', 'JAVA'],
       demoUrl: '',
@@ -51,6 +58,7 @@ const Projects = () => {
       title: 'One-to-one mapping between a profile report and its status',
       description:
         "Implemented complex logic for a profile report's status page to be linked to a unique status pertaining to the report, for compliance of the Digital Services Act.",
+      association: 'LinkedIn',
       image: '/profile-sh.png',
       technologies: ['JAVA'],
       demoUrl: '',
@@ -60,12 +68,24 @@ const Projects = () => {
       title: "Remy: A NYC Apartment Renter's Companion",
       description:
         "A web app that battles New York's housing crisis. Done in a group of 4.",
+      association: 'Personal Project',
       image: '/remy-splash.png',
       technologies: ['REACT', 'NEXT.JS', 'EXPRESS', 'MONGODB'],
       demoUrl: 'https://www.youtube.com/watch?v=kgD-H-XxxW8',
       githubUrl: 'https://github.com/RemyCapstone/capstone',
     },
   ];
+
+  const getAssociationIcon = (a) => {
+    switch (a) {
+      case 'The New York Times':
+        return <SiNewyorktimes />;
+      case 'LinkedIn':
+        return <FaLinkedin />;
+      default:
+        break;
+    }
+  };
 
   return (
     <section id="projects" className="projects">
@@ -90,7 +110,13 @@ const Projects = () => {
               </div>
 
               <div className="project-content">
-                <h3 className="project-title">{project.title}</h3>
+                <div>
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-caption">
+                    associated with {getAssociationIcon(project.association)}
+                    {project.association.toLowerCase()}
+                  </p>
+                </div>
                 <p className="project-description">{project.description}</p>
 
                 {project.technologies && project.technologies.length > 0 && (
